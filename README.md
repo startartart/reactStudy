@@ -11,6 +11,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     * [리스트와 키](./gitreadme/list_and_key.md)
     * [폼](./gitreadme/form.md)
     * [state 끌어올리기](./gitreadme/pullup_state.md)
+    * [합성(구성)과 상속](./gitreadme/composition_and_inheritance.md)
+    * [프로젝트 진행하기: Show Prize](./gitreadme/show_prize.md)
 * 2주차 목표 : Todo page 작성하기
 
 ***
