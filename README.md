@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 `npm start` - 시작
 
 * 1주차 목표 : react 이해하기
+    * [컴포넌트 이해하기](./gitreadme/components.md)
+    * [이벤트 제어하기](./gitreadme/event_and_rendering.md)
+    * [리스트와 키](./gitreadme/list_and_key.md)
+    * [폼](./gitreadme/form.md)
+    * [state 끌어올리기](./gitreadme/pullup_state.md)
 * 2주차 목표 : Todo page 작성하기
 
 ***
