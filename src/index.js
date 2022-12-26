@@ -1,166 +1,125 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const goods = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+const exampleTodo = [
+  {id:0, text:"밥먹기"},
+  {id:1, text:"놀기"},
+  {id:2, text:"야구하기"},
+  {id:3, text:"쇼핑하기"},
+  {id:4, text:"공부하기"}
 ];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filterText: '',
-      inStockOnly: false
-    };
-    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleInStockChange = this.handleInStockChange.bind(this);
+class Delete extends React.Component {
+
+  deleteTodo(e) {
+    e.target.parentNode.remove();
   }
 
-  handleFilterTextChange(filterText) {
-    this.setState({
-      filterText: filterText
-    });
-  }
-
-  handleInStockChange(inStockOnly) {
-    this.setState({
-      inStockOnly: inStockOnly
-    });
-  }
-
-  render() {
+  render() {    
     return (
-      <div>
-        <SearchBar
-          filterText={this.state.filterText}
-          inStockOnly={this.state.inStockOnly}
-          onFilterTextChange={this.handleFilterTextChange}
-          onInStockChange={this.handleInStockChange}
-        />
-        <ProductTable
-          products={this.props.products}
-          filterText={this.state.filterText}
-          inStockOnly={this.state.inStockOnly}
-        />
-      </div>
-    );
+      <button onClick={this.deleteTodo}>삭제</button>
+    )
   }
 }
 
-class SearchBar extends React.Component {
+class Row extends React.Component {
+  
+  render() {
+    return (
+      <tr>
+        <p>{this.props.todo}</p>
+        <Delete/>
+      </tr>
+    )
+  }
+}
+
+class List extends React.Component {
+  render() {
+    const row = [];
+    exampleTodo.forEach((todo) => {
+      row.push(<Row todo={todo.text} key={todo.id}/>);
+    })
+    return (
+      <table>
+        <td>
+          {row}
+        </td>
+      </table>
+    )
+  }
+}
+
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
-    this.handleInStockChange = this.handleInStockChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onFilterTextChange('');
+    this.props.onAddTodo(this.props.currentText);
   }
 
   handleFilterTextChange(e) {
     this.props.onFilterTextChange(e.target.value);
   }
 
-  handleInStockChange(e) {
-    this.props.onInStockChange(e.target.checked);
-  }
-
   render() {
     return (
-      <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={this.props.filterText}
-          onChange={this.handleFilterTextChange}
-        />
-        <p>
-          <input
-            type="checkbox"
-            checked={this.props.inStockOnly}
-            onChange={this.handleInStockChange}
-          />
-          {' '}
-          Only show products in stock
-        </p>
+      <form onSubmit={this.handleSubmit}>
+        <input type="text" 
+        value={this.props.currentText}
+        onChange={this.handleFilterTextChange}/>
+        <button type="submit">추가하기</button>
       </form>
-    );
+    )
   }
 }
 
-class ProductTable extends React.Component {
-  render() {
-    const rows = [];
-    let lastCategory = null;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentText: ''
+    };
+    this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+    this.addTodo = this.addTodo.bind(this);
+    this.length = exampleTodo.length;
+  }
 
-    this.props.products.forEach((product) => {
-      if (product.name.indexOf(this.props.filterText) === -1) {
-        return;
-      }
-      if (this.props.inStockOnly && !product.stocked) {
-        return;
-      }
-      if (product.category !== lastCategory) {
-        rows.push(
-          <ProductCategoryRow
-            category={product.category}
-            key={product.category}
-          />
-        );
-      }
-      rows.push(
-        <ProductRow
-          product={product}
-          key={product.name}
+  addTodo(data) {
+    this.length++;
+    exampleTodo.push({
+      id: this.length,
+      text: data
+    })
+  }
+
+  handleFilterTextChange(text) {
+    this.setState({
+      currentText: text
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Input 
+        currentText = {this.state.currentText}
+        onFilterTextChange={this.handleFilterTextChange}
+        onAddTodo = {this.addTodo}
         />
-      );
-      lastCategory = product.category;
-    });
-
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    );
-  }
-}
-
-class ProductCategoryRow extends React.Component {
-  render() {
-    return (
-      <tr>
-        <th colSpan="2">{this.props.category}</th>
-      </tr>
-    );
-  }
-}
-
-class ProductRow extends React.Component {
-  render() {
-    const name = this.props.product.stocked ?
-      this.props.product.name :
-      <span style={{color: 'red'}}>
-        {this.props.product.name}
-      </span>;
-
-    return (
-      <tr>
-        <td>{name}</td>
-        <td>{this.props.product.price}</td>
-      </tr>
-    );
+        <List 
+        />
+      </div>
+    )
   }
 }
 
 ReactDOM.render(
-  <App products={goods}/>,
+  <App />,
   document.getElementById('root')
 );
