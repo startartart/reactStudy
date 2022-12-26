@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     * [프로젝트 진행하기: Show Prize](./gitreadme/show_prize.md)
 * 2주차 목표 : Todo page 작성하기
     * [프로젝트 진행하기: Todo List](./gitreadme/project1/todo.md)
+    * [다시 시작하기](./gitreadme/restart.md)
 
 ***
 
