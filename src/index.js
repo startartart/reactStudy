@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
 
 function CreateUser({ username, email, onChange, onCreate }) {
   return (
@@ -22,6 +22,23 @@ function CreateUser({ username, email, onChange, onCreate }) {
 }
 
 function User({ user, onRemove, onToggle }) {
+  // useEffect(() => {
+  //   console.log('컴포넌트가 화면에 나타남');
+  //   return () => {
+  //     console.log('컴포넌트가 화면에서 사라짐');
+  //   };
+  // }, []);
+  useEffect(() => {
+    console.log('user 값이 설정됨');
+    console.log(user);
+    return () => {
+      console.log('user 가 바뀌기 전..');
+      console.log(user);
+    };
+  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // });
   return (
     <div>
       <b
@@ -130,7 +147,5 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
