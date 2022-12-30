@@ -19,7 +19,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
         * [react 컴포넌트 생성과 기초](./gitreadme/restart.md)
         * [랜더링 이해하기](./gitreadme/restart2.md)
         * [useEffect](./gitreadme/restart3.md)
-        * [useMemo](./gitreadme/restart4.md)
+        * [재사용 훅](./gitreadme/restart4.md)
 
 ***
 
