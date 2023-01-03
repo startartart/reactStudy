@@ -20,6 +20,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
         * [랜더링 이해하기](./gitreadme/restart2.md)
         * [useEffect](./gitreadme/restart3.md)
         * [재사용 훅](./gitreadme/restart4.md)
+* 3주차 목표 : 컴포넌트 스타일링하기
+    * react 이해하기
+        * [useReducer](./gitreadme/usereducer.md)
 
 ***
 
