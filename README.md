@@ -23,6 +23,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * 3주차 목표 : 컴포넌트 스타일링하기
     * react 이해하기
         * [useReducer](./gitreadme/usereducer.md)
+        * [contextAPI](./gitreadme/contextapi.md)
 
 ***
 
