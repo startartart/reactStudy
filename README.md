@@ -27,6 +27,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
         * [Immer](./gitreadme/immer.md)
     * [Sass](./gitreadme/sass.md)
     * [CSS Module](./gitreadme/cssmodule.md)
+* 4주차 목표 : 에플리케이션 준비하기
+    * [함수형 Todo List](./gitreadme/project2/todo.md)
 
 ***
 
