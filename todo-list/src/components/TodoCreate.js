@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
-import { useTodoDispatch, useTodoNextId } from '../TodoContext';
+import { useTodoState, useTodoDispatch, useTodoNextId } from '../TodoContext';
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -83,6 +83,10 @@ function TodoCreate() {
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
 
+  const todos = useTodoState();
+  const noneTodos = todos.length <= 0;
+  console.log('noneTodos: ', noneTodos)
+
   const onToggle = () => setOpen(!open);
   const onChange = e => setValue(e.target.value);
   const onSubmit = e => {
@@ -102,7 +106,7 @@ function TodoCreate() {
 
   return (
     <>
-      {open && (
+      {(open || noneTodos) && (
         <InsertFormPositioner>
           <InsertForm onSubmit={onSubmit}>
             <Input 
