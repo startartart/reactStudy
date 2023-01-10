@@ -24,3 +24,12 @@
         }
         `;
         ```
+* Context API를 활용한 상태 관리
+    > Todo List는 최상위 컴포넌트인 `App`에서 모든 상태를 관리하기에는 문제가 없다. 허나, 애플리케이션의 규모가 커지게 된다면 복잡해지고 `props`를 전달하는 깊이가 커질 수 있으므로 Context API를 활용한다.
+
+    1. `Reducer`를 만들어 상태를 관리하는 `TodoProvider` 컴포넌트를 만든다.
+    2. `TodoProvider` 내에는 `state` `dispatch` `nextid` 값을 가지는 세개의 `Context`를 가진다.
+    3. `Context`에서 사용할 값을 지정할 때에는 `Provider` 컴포넌트를 렌더링하고 `value`를 설정한다. 그리고 `props`로 받아온 `children` 값을 내부에 렌더링한다.
+    4. `useContext`의 사용을 줄이기 위해 커스텀 Hook을 만든다. `useTodoState` `useTodoDispatch` `useTodoNextId`
+    5. `Context` 사용을 위한 커스텀 Hook에 대해 에러 처리를 해준다.
+    6. 현 프로젝트에서 `Context`를 사용하기위해 모든 내용을 만든 `TodoProvider`로 감싸준다.
