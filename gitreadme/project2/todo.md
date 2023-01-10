@@ -43,3 +43,8 @@
     import { useTodoNextId } from '../TodoContext';
     ```
     * 이하 코드의 내용을 참고 ..
+
+---
+
+* 추가학습
+    1. 남은 `task`가 없을 경우, `"모든 일을 끝냄"` 텍스트로 변경한다.
