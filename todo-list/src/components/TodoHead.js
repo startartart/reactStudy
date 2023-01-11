@@ -38,7 +38,8 @@ function TodoHead() {
   });
   const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
 
-  const taskCheck = undoneTasks.length === 0 ? '모든 일을 끝냄' : `할 일 ${undoneTasks.length}개 남음`;
+  const taskCheck = undoneTasks.length === 0 ? 
+  (todos.length === 0 ? '할 일을 추가해야 함' : '모든 일을 끝냄') : `할 일 ${undoneTasks.length}개 남음`;
 
   return (
     <TodoHeadBlock>
