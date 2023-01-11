@@ -12,6 +12,7 @@ const TodoListBlock = styled.div`
 `;
 
 function TodoList() {
+
     const todos = useTodoState();
     
     return (
@@ -22,6 +23,7 @@ function TodoList() {
                 id={todo.id}
                 text={todo.text}
                 done={todo.done}
+                editable={todo.editable}
             />
         ))}
     </TodoListBlock>
