@@ -49,3 +49,9 @@
 * 추가학습
     1. 남은 `task`가 없을 경우, `"모든 일을 끝냄"` 텍스트로 변경한다.
     2. 남은 `task`가 없을 경우, 자동으로 `InsertForm` 컴포넌트를 띄운다.
+        * `task`가 존재하지 않을 경우 `"할 일을 추가해야 함"` 텍스트로 변경한다.
+    3. 수정기능과 텍스트 Click to Edit
+        * `todos` 배열에 `editable` 속성 추가
+        * `reducer action`으로 `EDIT`와 `UPDATE` 추가
+        * `TodoItem` 컴포넌트 내 `InputForm` `Input` `Change` 컴포넌트 추가해 `onEdit` `onChange` `onSubmit` 이벤트를 통한 각각의 핸들러 연결
+        *  `styled` 관리 및 제어
