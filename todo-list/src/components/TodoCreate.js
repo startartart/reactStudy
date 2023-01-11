@@ -85,7 +85,6 @@ function TodoCreate() {
 
   const todos = useTodoState();
   const noneTodos = todos.length <= 0;
-  console.log('noneTodos: ', noneTodos)
 
   const onToggle = () => setOpen(!open);
   const onChange = e => setValue(e.target.value);
