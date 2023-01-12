@@ -46,4 +46,8 @@
     );
     ```
 
-* `button`을 추가하여 재요청을 보낸다면, `useEffect` 내에 있는 `fetchUsers()`함수를 빼온다음 `button`의 클릭이벤트로 연결한다. 
+* `button`을 추가하여 재요청을 보낸다면, `useEffect` 내에 있는 `fetchUsers()`함수를 빼온다음 `button`의 클릭이벤트로 연결한다.
+
+* `useState` 대신 `useReducer`을 사용해서 구현해본다.
+    * `action`의 값은  각각 `LOADING` `SUCCESS` `ERROR` 액션을 처리한다.
+        > `useReducer`로 구현될 때 `useState`의 `setState` 함수를 여러번 사용하지 않아도 되는 점과, 로직을 분리함으로써 다른곳에서도 쉽게 재사용할 수 있다.
