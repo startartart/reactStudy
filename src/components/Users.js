@@ -1,26 +1,73 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useReducer} from "react";
 import axios from 'axios'
 
+function reducer(state, action) {
+    switch (action.type) {
+        case 'LOADING':
+            return {
+                loading: true,
+                data: null,
+                error: null
+            };
+        case 'SUCCESS':
+            return {
+                loading: false,
+                data: action.data,
+                error: null
+            };
+        case 'ERROR':
+            return {
+                loading: false,
+                data: null,
+                error: action.error
+            };
+        default:
+            throw new Error(`Unhandled action type: ${action.type}`);
+        }
+}
+
 function Users() {
-    const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    // useState를 사용
+    // const [users, setUsers] = useState(null);
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState(null);
+
+    // const fetchUsers = async () => {
+    //     try {
+    //         setError(null);
+    //         setUsers(null);
+    //         setLoading(true);
+    //         const response = await axios.get(
+    //             'https://jsonplaceholder.typicode.com/users'
+    //         );
+    //         setUsers(response.data);
+    //     } catch (e) {
+    //         setError(e);
+    //     }
+    //     setLoading(false);
+    // };
+
+    // useReducer을 사용
+    const [state, dispatch] = useReducer(reducer, {
+        loading: false,
+        data: null,
+        erorr: null
+    });
+
+    const {loading, data: users, error} = state;
 
     const fetchUsers = async () => {
+        dispatch({ type: 'LOADING' });
         try {
-            setError(null);
-            setUsers(null);
-            setLoading(true);
             const response = await axios.get(
-                'https://jsonplaceholder.typicode.com/users'
+            'https://jsonplaceholder.typicode.com/users'
             );
-            setUsers(response.data);
+            dispatch({ type: 'SUCCESS', data: response.data });
         } catch (e) {
-            setError(e);
+            dispatch({ type: 'ERROR', error: e });
         }
-        setLoading(false);
-    };
-    
+      };
+
     useEffect(() => {
         fetchUsers();
     }, []);
@@ -41,6 +88,5 @@ function Users() {
         </div>
     );
 }
-
 
 export default Users;
