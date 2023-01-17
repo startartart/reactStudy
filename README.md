@@ -30,6 +30,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * 4주차 목표 : 에플리케이션 준비하기()
     * [함수형 Todo List](./gitreadme/project2/todo.md)
     * [API 연동](./gitreadme/api_integrate.md)
+    * [Router](./gitreadme/router.md)
 
 ***
 
