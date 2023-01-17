@@ -32,9 +32,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     * [API 연동](./gitreadme/api_integrate.md)
     * [Router](./gitreadme/router.md)
 
+
+### npm++
+
+* [마우스 이벤트 관리하기](https://www.npmjs.com/package/react-animated-cursor?activeTab=readme)
+
 ***
 
 ## 참고사이트
+
 
 ### Code Splitting
 

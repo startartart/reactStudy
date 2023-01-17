@@ -55,3 +55,4 @@
         * `reducer action`으로 `EDIT`와 `UPDATE` 추가
         * `TodoItem` 컴포넌트 내 `InputForm` `Input` `Change` 컴포넌트 추가해 `onEdit` `onChange` `onSubmit` 이벤트를 통한 각각의 핸들러 연결
         *  `styled` 관리 및 제어
+    4. mouse cursor 입히기 `react-animated-cursor` 사용 (1/17)
