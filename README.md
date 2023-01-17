@@ -27,14 +27,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
         * [Immer](./gitreadme/immer.md)
     * [Sass](./gitreadme/sass.md)
     * [CSS Module](./gitreadme/cssmodule.md)
-* 4주차 목표 : 에플리케이션 준비하기()
+* 4주차 목표 : 에플리케이션 준비하기
     * [함수형 Todo List](./gitreadme/project2/todo.md)
     * [API 연동](./gitreadme/api_integrate.md)
     * [Router](./gitreadme/router.md)
+    * [react 서버연동](./gitreadme/react-express.md)
 
 
 ### npm++
 
+* [라우터 관리하기](https://reactrouter.com/en/main)
 * [마우스 이벤트 관리하기](https://www.npmjs.com/package/react-animated-cursor?activeTab=readme)
 
 ***
